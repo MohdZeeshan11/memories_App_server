@@ -7,9 +7,12 @@ const {
     deletePost,
     likePost
 } = require('../controllers/posts');
+const auth = require('../middleware/authorization');
 
-router.route('/').get(getAllPosts).post(createPost);
-router.route('/:id').patch(updatePost).delete(deletePost);
-router.route('/:id/likePost').patch(likePost)
+// console.log('auth =', auth);
+
+router.route('/').get(auth,getAllPosts).post(auth,createPost);
+router.route('/:id').patch(auth,updatePost).delete(auth,deletePost);
+router.route('/:id/likePost').patch(auth,likePost)
 
 module.exports = router;
