@@ -19,7 +19,9 @@ app.use(cors());
 // routes
 app.use('/post',posts);
 app.use('/user',user);
-
+app.get('/',(req,res)=>{
+    res.send('deploy success');
+})
 const port = process.env.port || 5000;
 
 // database connection
