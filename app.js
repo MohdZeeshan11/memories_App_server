@@ -9,11 +9,11 @@ const posts = require('./routes/posts');
 const user = require('./routes/user');
 
 
-app.use(morgan('tiny'));
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
+app.use(morgan('tiny'));
 
 
 // routes

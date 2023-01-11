@@ -13,6 +13,6 @@ const auth = require('../middleware/authorization');
 
 router.route('/').get(auth,getAllPosts).post(auth,createPost);
 router.route('/:id').patch(auth,updatePost).delete(auth,deletePost);
-router.route('/:id/likePost').patch(auth,likePost)
+router.route('/likePost/:id').patch(auth,likePost)
 
 module.exports = router;
