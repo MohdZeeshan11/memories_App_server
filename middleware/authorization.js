@@ -35,9 +35,10 @@ const authenticationMiddleware = async (req, res, next) => {
   }
 
   const token = authHeader.split(' ')[1]
+  console.log('gshan');
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    const decoded = jwt.verify(token, process.env.JWT_SIGNING_KEY)
     // const { id, username } = decoded
     // req.user = { id, username }
     req.user = decoded

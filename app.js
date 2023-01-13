@@ -7,6 +7,8 @@ const start = require('./db/connect');
 require('dotenv').config();
 const posts = require('./routes/posts');
 const user = require('./routes/user');
+const notFoundMiddleware = require('./middleware/not-found');
+const errorHandlerMiddleware = require('./middleware/error-handler');
 
 
 
@@ -22,6 +24,10 @@ app.use('/user',user);
 app.get('/',(req,res)=>{
     res.send('deploy success');
 })
+
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
+
 const port = process.env.port || 5000;
 
 // database connection
